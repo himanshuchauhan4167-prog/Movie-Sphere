@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>MovieSphere - Movie Details & Insights</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "background": "#131316",
+            "on-tertiary-fixed": "#1b1b23",
+            "on-secondary-container": "#6a4e00",
+            "surface-variant": "#353438",
+            "surface-container-lowest": "#0e0e11",
+            "tertiary-fixed-dim": "#c7c5d0",
+            "on-error-container": "#ffdad6",
+            "tertiary-fixed": "#e4e1ec",
+            "on-surface": "#e4e1e6",
+            "inverse-surface": "#e4e1e6",
+            "secondary-fixed-dim": "#fabd00",
+            "error": "#ffb4ab",
+            "on-tertiary": "#303038",
+            "on-tertiary-fixed-variant": "#46464f",
+            "tertiary": "#c7c5d0",
+            "surface-container-highest": "#353438",
+            "on-tertiary-container": "#fbf7ff",
+            "surface-container-high": "#2a2a2d",
+            "on-background": "#e4e1e6",
+            "on-primary": "#690003",
+            "secondary-container": "#fabd00",
+            "primary-container": "#e50914",
+            "on-primary-fixed": "#410001",
+            "surface-bright": "#39393c",
+            "on-primary-fixed-variant": "#930007",
+            "on-secondary-fixed": "#261a00",
+            "outline": "#af8782",
+            "on-error": "#690005",
+            "secondary": "#ffdf9e",
+            "secondary-fixed": "#ffdf9e",
+            "on-secondary": "#3f2e00",
+            "error-container": "#93000a",
+            "surface": "#131316",
+            "surface-tint": "#ffb4aa",
+            "surface-container-low": "#1b1b1e",
+            "on-surface-variant": "#e9bcb6",
+            "surface-dim": "#131316",
+            "outline-variant": "#5e3f3b",
+            "surface-container": "#1f1f22",
+            "primary-fixed-dim": "#ffb4aa",
+            "on-primary-container": "#fff7f6",
+            "on-secondary-fixed-variant": "#5b4300",
+            "primary-fixed": "#ffdad5",
+            "inverse-primary": "#c0000c",
+            "inverse-on-surface": "#303033",
+            "tertiary-container": "#72717b",
+            "primary": "#ffb4aa"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "base": "8px",
+            "gutter": "24px",
+            "lg": "48px",
+            "margin-desktop": "64px",
+            "sm": "12px",
+            "xs": "4px",
+            "md": "24px",
+            "margin-mobile": "16px",
+            "xl": "80px"
+          },
+          fontFamily: {
+            "headline-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "body-md": ["Inter"],
+            "display-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-md": ["Inter"]
+          },
+          fontSize: {
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+            "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen relative overflow-x-hidden flex flex-col items-center justify-center p-4 md:p-8">
+
+  <!-- Background Context (Blurred) -->
+  <div class="fixed inset-0 z-0 pointer-events-none">
+    <img class="w-full h-full object-cover blur-sm opacity-50" data-alt="A wide cinematic shot of a vast desert landscape under a deep orange and black twilight sky." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNZuFSHoSdmZo5oBs3AVOAEe7hh4D92NsZeuTVA370pWFOQO1pOnKGzXZtiUWLi1sJM06KmnMYiEWoR3Xi4L2dmsgPowPYF4gpbeMby37H8C77vml8bWR38WBZLnYKnmmOAPBv9pAVmPNE0kRnbv218oAJAibFo190GQYbGi1S6NrYg_YyH5M9Y3C4RvHRB2i3c2Ay2kJR9R9xneJDWXg3wWpWZ1IBRRAkdYOpxWyoTCBVhjgJn10vlg"/>
+  </div>
+
+  <!-- Unified Layout Wrapper -->
+  <div class="relative z-10 w-full max-w-7xl my-auto flex flex-col gap-6">
+
+    <!-- Page Title Header -->
+    <header class="flex items-center justify-between border-b border-white/10 pb-4">
+      <h1 class="text-2xl font-bold tracking-tight text-on-surface flex items-center gap-2">
+        <span class="material-symbols-outlined text-primary-container">movie</span>
+        MovieSphere Overview
+      </h1>
+    </header>
+
+    <!-- Side-by-Side Grid Container -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+
+      <!-- SECTION 1: Trailer & Overview -->
+      <div class="bg-surface-container-low rounded-xl shadow-2xl overflow-hidden relative border border-white/5 flex flex-col">
+        <!-- Close Button -->
+        <button aria-label="Close section" class="absolute top-sm right-sm z-10 w-10 h-10 flex items-center justify-center rounded-full bg-background/50 hover:bg-background/80 text-on-surface backdrop-blur-md transition-colors">
+          <span class="material-symbols-outlined" data-icon="close">close</span>
+        </button>
+
+        <!-- Trailer Placeholder (16:9) -->
+        <div class="relative w-full aspect-video bg-surface-container-highest rounded-t-xl overflow-hidden group cursor-pointer">
+          <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Movie trailer thumbnail." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHBrB40YwyAp4AmoiCltQNHMS0jFKIpY8IIv17-15Bn6Se8-PW97tf2Xhf7Vsi2Vn2OQMTdszwp_AiETACso1digk3_Lbz2Pgd-KnnLRFq6ZJfu1F3oLdw34rXALqxM3lsYFmQ_kMbAmfTgu3ISOspVkeShn4qNnXYXaCH870BDnUO_rEIDkEV4ae8Sns1oChF7jwNyeCmFwEhXkkXH7AhxYa-KPG-KPCve_iuBRf7YTmVo4jZlWcROg"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent opacity-80"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="w-16 h-16 rounded-full bg-primary-container/80 backdrop-blur-md flex items-center justify-center text-on-primary-container group-hover:bg-primary-container group-hover:scale-110 transition-all shadow-[0_0_20px_rgba(229,9,20,0.4)]">
+              <span class="material-symbols-outlined text-4xl ml-1" data-icon="play_arrow" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Details Section -->
+        <div class="p-md md:p-lg flex flex-col gap-md">
+          <div class="flex flex-col gap-sm">
+            <h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Dune: Part Two</h2>
+            <div class="flex flex-wrap items-center gap-md text-on-surface-variant font-label-md text-label-md">
+              <div class="flex items-center gap-xs text-secondary-container">
+                <span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="font-bold text-on-surface">4.8</span>
+              </div>
+              <span class="opacity-50">•</span>
+              <span>2h 46m</span>
+              <span class="opacity-50">•</span>
+              <span>2024</span>
+            </div>
+          </div>
+
+          <!-- Genres -->
+          <div class="flex flex-wrap gap-sm">
+            <span class="px-sm py-xs bg-surface-variant/50 rounded-full font-label-sm text-label-sm text-on-surface backdrop-blur-sm border border-white/5">Sci-Fi</span>
+            <span class="px-sm py-xs bg-surface-variant/50 rounded-full font-label-sm text-label-sm text-on-surface backdrop-blur-sm border border-white/5">Adventure</span>
+            <span class="px-sm py-xs bg-surface-variant/50 rounded-full font-label-sm text-label-sm text-on-surface backdrop-blur-sm border border-white/5">Drama</span>
+          </div>
+
+          <!-- Synopsis -->
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Paul Atreides unites with Chani and the Fremen while on a warpath of revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the known universe, he endeavors to prevent a terrible future only he can foresee.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="pt-sm flex flex-col sm:flex-row gap-sm mt-auto">
+            <button class="flex-1 bg-primary-container text-on-primary-container font-label-md text-label-md py-sm px-md rounded-lg flex items-center justify-center gap-sm hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(229,9,20,0.3)] transition-all duration-200">
+              <span class="material-symbols-outlined" data-icon="bookmark_add">bookmark_add</span>
+              Save to Watchlist
+            </button>
+            <button class="flex-1 bg-surface-variant/30 text-on-surface border border-white/10 font-label-md text-label-md py-sm px-md rounded-lg flex items-center justify-center gap-sm backdrop-blur-md hover:bg-surface-variant/50 transition-colors duration-200">
+              <span class="material-symbols-outlined" data-icon="share">share</span>
+              Share
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 2: Extended Insights & Streaming -->
+      <div class="bg-surface-container-low rounded-xl shadow-2xl p-md md:p-lg relative border border-white/5 flex flex-col gap-md">
+        <!-- Close Button -->
+        <button aria-label="Close section" class="absolute top-sm right-sm z-10 w-10 h-10 flex items-center justify-center rounded-full bg-background/50 hover:bg-background/80 text-on-surface backdrop-blur-md transition-colors">
+          <span class="material-symbols-outlined" data-icon="close">close</span>
+        </button>
+
+        <!-- Header Info -->
+        <div class="flex flex-col gap-sm">
+          <h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Dune: Part Two</h2>
+          <div class="flex flex-wrap items-center gap-md text-on-surface-variant font-label-md text-label-md">
+            <div class="flex items-center gap-xs text-secondary-container">
+              <span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="font-bold text-on-surface">4.8</span>
+            </div>
+            <span class="opacity-50">•</span>
+            <span>2h 46m</span>
+            <span class="opacity-50">•</span>
+            <span>2024</span>
+          </div>
+        </div>
+
+        <!-- Genres -->
+        <div class="flex flex-wrap gap-sm">
+          <span class="px-sm py-xs bg-surface-variant/50 rounded-full font-label-sm text-label-sm text-on-surface backdrop-blur-sm border border-white/5">Sci-Fi</span>
+          <span class="px-sm py-xs bg-surface-variant/50 rounded-full font-label-sm text-label-sm text-on-surface backdrop-blur-sm border border-white/5">Adventure</span>
+          <span class="px-sm py-xs bg-surface-variant/50 rounded-full font-label-sm text-label-sm text-on-surface backdrop-blur-sm border border-white/5">Drama</span>
+        </div>
+
+        <!-- Synopsis -->
+        <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Paul Atreides unites with Chani and the Fremen while on a warpath of revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the known universe, he endeavors to prevent a terrible future only he can foresee.
+        </p>
+
+        <!-- Detailed Breakdown -->
+        <div class="flex flex-col gap-lg border-t border-white/10 pt-md">
+          <!-- Awards Section -->
+          <section class="flex flex-col gap-sm">
+            <h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Notable Awards</h3>
+            <div class="flex gap-md">
+              <div class="flex items-center gap-xs text-secondary-container">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+                <span class="text-label-sm">Best Picture</span>
+              </div>
+              <div class="flex items-center gap-xs text-secondary-container">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">movie_filter</span>
+                <span class="text-label-sm">Best Cinematography</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Movie Sequence Section -->
+          <section class="flex flex-col gap-sm">
+            <h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Timeline &amp; Order</h3>
+            <div class="flex items-center gap-xs">
+              <div class="flex items-center gap-xs">
+                <div class="w-2 h-2 rounded-full bg-primary-container"></div>
+                <div class="h-0.5 w-8 bg-primary-container"></div>
+                <div class="w-3 h-3 rounded-full bg-primary-container ring-4 ring-primary-container/20"></div>
+                <div class="h-0.5 w-8 bg-surface-variant/50"></div>
+                <div class="w-2 h-2 rounded-full bg-surface-variant/50"></div>
+              </div>
+              <span class="ml-1 text-label-md text-on-surface">Part 2 of 3</span>
+            </div>
+          </section>
+
+          <!-- Shared Universe Section -->
+          <section class="flex flex-col gap-sm">
+            <h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Arrakis Universe</h3>
+            <div class="flex gap-sm overflow-x-auto pb-xs">
+              <div class="flex-shrink-0 w-24 aspect-[2/3] bg-surface-variant/30 rounded-lg overflow-hidden border border-white/5 group cursor-pointer">
+                <img alt="Dune Part One" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNZuFSHoSdmZo5oBs3AVOAEe7hh4D92NsZeuTVA370pWFOQO1pOnKGzXZtiUWLi1sJM06KmnMYiEWoR3Xi4L2dmsgPowPYF4gpbeMby37H8C77vml8bWR38WBZLnYKnmmOAPBv9pAVmPNE0kRnbv218oAJAibFo190GQYbGi1S6NrYg_YyH5M9Y3C4RvHRB2i3c2Ay2kJR9R9xneJDWXg3wWpWZ1IBRRAkdYOpxWyoTCBVhjgJn10vlg"/>
+              </div>
+              <div class="flex-shrink-0 w-24 aspect-[2/3] bg-surface-variant/30 rounded-lg flex items-center justify-center border border-dashed border-white/20">
+                <span class="text-[10px] text-on-surface-variant text-center px-xs">Dune: Prophecy</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Where to Watch Section -->
+          <section class="flex flex-col gap-sm">
+            <h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Streaming On</h3>
+            <div class="flex items-center justify-between bg-surface-variant/20 p-sm rounded-xl border border-white/5">
+              <div class="flex items-center gap-md">
+                <div class="w-8 h-8 bg-primary-container rounded flex items-center justify-center font-bold text-[10px] text-on-primary-container">HBO</div>
+                <div class="w-8 h-8 bg-background rounded flex items-center justify-center font-bold text-[10px] text-on-surface">MAX</div>
+              </div>
+              <button class="bg-primary-container/10 hover:bg-primary-container/20 text-primary-container px-md py-xs rounded-full text-label-sm font-bold transition-colors">
+                Watch Now
+              </button>
+            </div>
+          </section>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="pt-sm flex flex-col sm:flex-row gap-sm mt-auto">
+          <button class="flex-1 bg-primary-container text-on-primary-container font-label-md text-label-md py-sm px-md rounded-lg flex items-center justify-center gap-sm hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(229,9,20,0.3)] transition-all duration-200">
+            <span class="material-symbols-outlined" data-icon="bookmark_add">bookmark_add</span>
+            Save to Watchlist
+          </button>
+          <button class="flex-1 bg-surface-variant/30 text-on-surface border border-white/10 font-label-md text-label-md py-sm px-md rounded-lg flex items-center justify-center gap-sm backdrop-blur-md hover:bg-surface-variant/50 transition-colors duration-200">
+            <span class="material-symbols-outlined" data-icon="share">share</span>
+            Share
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

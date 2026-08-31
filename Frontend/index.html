@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>MovieSphere - Home</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline-variant": "#5e3f3b",
+            "error-container": "#93000a",
+            "on-tertiary-fixed": "#1b1b23",
+            "error": "#ffb4ab",
+            "on-error": "#690005",
+            "surface": "#131316",
+            "surface-container-high": "#2a2a2d",
+            "on-tertiary-container": "#fbf7ff",
+            "secondary": "#ffdf9e",
+            "primary-fixed-dim": "#ffb4aa",
+            "surface-bright": "#39393c",
+            "on-tertiary": "#303038",
+            "surface-dim": "#131316",
+            "on-error-container": "#ffdad6",
+            "inverse-primary": "#c0000c",
+            "outline": "#af8782",
+            "on-secondary-container": "#6a4e00",
+            "primary": "#ffb4aa",
+            "background": "#0F0F12",
+            "tertiary-container": "#72717b",
+            "on-primary": "#690003",
+            "surface-container": "#1f1f22",
+            "tertiary-fixed-dim": "#c7c5d0",
+            "secondary-fixed": "#ffdf9e",
+            "surface-tint": "#ffb4aa",
+            "surface-variant": "#353438",
+            "secondary-fixed-dim": "#fabd00",
+            "tertiary-fixed": "#e4e1ec",
+            "inverse-on-surface": "#303033",
+            "surface-container-low": "#1b1b1e",
+            "on-primary-fixed": "#410001",
+            "on-surface-variant": "#e9bcb6",
+            "on-secondary-fixed": "#261a00",
+            "primary-fixed": "#ffdad5",
+            "surface-container-highest": "#353438",
+            "on-primary-fixed-variant": "#930007",
+            "on-background": "#e4e1e6",
+            "inverse-surface": "#e4e1e6",
+            "tertiary": "#c7c5d0",
+            "primary-container": "#e50914",
+            "on-surface": "#e4e1e6",
+            "on-primary-container": "#fff7f6",
+            "on-tertiary-fixed-variant": "#46464f",
+            "secondary-container": "#fabd00",
+            "on-secondary-fixed-variant": "#5b4300",
+            "surface-container-lowest": "#0e0e11",
+            "on-secondary": "#3f2e00"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "md": "24px",
+            "xs": "4px",
+            "gutter": "24px",
+            "base": "8px",
+            "sm": "12px",
+            "margin-mobile": "16px",
+            "lg": "48px",
+            "margin-desktop": "64px",
+            "xl": "80px"
+          },
+          "fontFamily": {
+            "body-md": ["Inter", "sans-serif"],
+            "headline-md": ["Inter", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "label-sm": ["Inter", "sans-serif"],
+            "display-lg": ["Inter", "sans-serif"],
+            "headline-lg": ["Inter", "sans-serif"],
+            "label-md": ["Inter", "sans-serif"],
+            "headline-lg-mobile": ["Inter", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #0F0F12; color: #e4e1e6; }
+    
+    /* Glassmorphism utilities */
+    .glass-panel, .glass {
+      background: rgba(27, 27, 30, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .card-hover:hover, .movie-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(229, 9, 20, 0.3);
+      z-index: 10;
+    }
+    
+    .card-hover, .movie-card {
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    /* Hide scrollbar for horizontal scrolling */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    
+    /* Custom scrollbar for webkit */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0F0F12;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #353438;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #e50914;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col overflow-x-hidden">
+
+  <!-- Desktop Navigation -->
+  <nav class="hidden md:flex justify-between items-center px-margin-desktop h-20 max-w-[1440px] mx-auto fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-white/10 shadow-none">
+    <div class="flex items-center gap-lg">
+      <span class="font-display-lg text-headline-md font-extrabold text-primary tracking-tighter cursor-pointer">MovieSphere</span>
+      <div class="flex gap-md">
+        <a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md" href="index.html">Home</a>
+        <a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md" href="#">Browse</a>
+        <a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md" href="#">Watchlist</a>
+      </div>
+    </div>
+    <div class="flex items-center gap-md">
+      <button class="text-on-surface-variant hover:text-primary transition-colors">
+        <span class="material-symbols-outlined" data-icon="search">search</span>
+      </button>
+      <button class="text-on-surface-variant hover:text-primary transition-colors">
+        <span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <nav class="md:hidden fixed bottom-0 w-full bg-surface-container-low border-t border-surface-variant z-50 flex justify-around items-center h-16 px-margin-mobile">
+    <a class="flex flex-col items-center text-primary-container" href="index.html">
+      <span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+      <span class="font-label-sm text-label-sm">Home</span>
+    </a>
+    <a class="flex flex-col items-center text-on-surface-variant hover:text-primary" href="#">
+      <span class="material-symbols-outlined" data-icon="movie">movie</span>
+      <span class="font-label-sm text-label-sm">Browse</span>
+    </a>
+    <a class="flex flex-col items-center text-on-surface-variant hover:text-primary" href="#">
+      <span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+      <span class="font-label-sm text-label-sm">Watchlist</span>
+    </a>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="flex-grow">
+    
+    <!-- Hero Section -->
+    <section class="relative w-full h-[80vh] min-h-[600px] flex items-end pb-lg pt-32 mt-0">
+      <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0F0F12] via-[#0F0F12]/60 to-transparent z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-[#0F0F12] via-transparent to-transparent z-10 w-2/3"></div>
+        <img alt="Dune: Part Two cinematic landscape" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida/AEtjO1U9DgIMKmVV5EIlBj8BDo3gc_3hiwC6K0k_YxmbsUBz4TBWlGPYD8hULqAzLI5ABOIlWSLmihXNhQanBK6InoSwhOOAlfrB26gs9hs2HXz0cztHMXetZoO8qBt_FdKTbth5B1s9oKAgqnVUOzgCOcTg5O09xu_-vveKpBMPN9yTwVDdD4DPNlFgzFMu-KomZwfDkXrDo2m7AmFR_XxPf36ATPU4rTLCiLe1ME2fEwzHZ2Snmz3PKbNQVXBb"/>
+      </div>
+      <div class="relative z-20 w-full px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+        <div class="max-w-2xl">
+          <div class="flex items-center gap-sm mb-xs">
+            <span class="bg-surface-container/80 text-on-surface font-label-sm px-2 py-1 rounded">2024</span>
+            <span class="bg-surface-container/80 text-on-surface font-label-sm px-2 py-1 rounded">2h 46m</span>
+            <div class="flex items-center gap-1 bg-surface-container/80 px-2 py-1 rounded">
+              <span class="material-symbols-outlined text-secondary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="font-label-sm font-bold text-on-surface">8.5/10</span>
+            </div>
+          </div>
+          <h1 class="font-display-lg text-display-lg text-on-surface mb-sm tracking-tighter drop-shadow-lg">Dune: Part Two</h1>
+          <p class="font-body-lg text-body-lg text-on-surface-variant mb-md max-w-xl drop-shadow-md line-clamp-3">
+            Paul Atreides unites with Chani and the Fremen while on a warpath of revenge against the conspirators who destroyed his family.
+          </p>
+          <div class="flex flex-wrap items-center gap-sm">
+            <button class="bg-[#E50914] hover:bg-inverse-primary text-white font-label-md px-6 py-3 rounded-lg flex items-center gap-2 transition-transform hover:scale-105">
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+              Watch Trailer
+            </button>
+            <button class="glass-panel text-on-surface hover:bg-white/10 font-label-md px-6 py-3 rounded-lg flex items-center gap-2 transition-all hover:scale-105">
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">add</span>
+              Add to Watchlist
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trending Section -->
+    <section class="py-lg px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-md gap-4">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[#E50914]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+          <h2 class="font-headline-md text-headline-md text-on-surface">Trending Today</h2>
+        </div>
+        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2 md:pb-0">
+          <button class="px-4 py-1.5 rounded-full font-label-sm text-on-surface-variant bg-surface-container-high hover:bg-surface-variant transition-colors whitespace-nowrap">All</button>
+          <button class="px-4 py-1.5 rounded-full font-label-sm text-on-surface-variant bg-surface-container-high hover:bg-surface-variant transition-colors whitespace-nowrap">Action</button>
+          <button class="px-4 py-1.5 rounded-full font-label-sm text-on-surface-variant bg-surface-container-high hover:bg-surface-variant transition-colors whitespace-nowrap">Comedy</button>
+          <button class="px-4 py-1.5 rounded-full font-label-sm text-on-primary-container bg-primary-container font-bold whitespace-nowrap">Sci-Fi</button>
+          <button class="px-4 py-1.5 rounded-full font-label-sm text-on-surface-variant bg-surface-container-high hover:bg-surface-variant transition-colors whitespace-nowrap">Drama</button>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-md">
+        <!-- Card 1 -->
+        <div class="group relative aspect-[2/3] rounded-lg overflow-hidden bg-surface-container-low cursor-pointer card-hover transition-all duration-300">
+          <img alt="Midnight Protocol movie poster" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqN7thTtove1WODsggcDZrdTXtxydCUNpL1BRUF2bWw-4hGpzPRbSX8t0GprgPHhhZbZ4tafMc0d8VaesLHuPYT4mN3UVL-rRnj5vNw2px5WGhPkN9tU4AIAPirdsb5saqpoOXFoaW_LgdwU5WHCiwNrfeAM6c76b2uWIPJgXGun39gGcEypwcbgR3837lB3kBO9Ey7WUZOfouo0hhGY6cMlSrFfKNAAofrRLfwxnJfcyRN5-SvnVLRg"/>
+          <button class="absolute top-2 left-2 z-20 text-on-surface/50 hover:text-white transition-colors group-hover:opacity-100 opacity-0 bg-surface-container-high/80 rounded-full p-1"><span class="material-symbols-outlined text-sm">bookmark_add</span></button>
+          <div class="absolute top-2 right-2 z-20 bg-surface-container-high/80 rounded px-1.5 py-0.5 flex items-center gap-1"><span class="material-symbols-outlined text-secondary-container text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="font-label-sm font-bold text-white text-[10px]">7.8</span></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0F0F12] via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-0 left-0 p-sm w-full transform translate-y-4 group-hover:translate-y-0 transition-transform">
+            <h3 class="font-label-md text-white line-clamp-1 font-bold">Midnight Protocol</h3>
+            <p class="font-label-sm text-on-surface-variant">2023</p>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="group relative aspect-[2/3] rounded-lg overflow-hidden bg-surface-container-low cursor-pointer card-hover transition-all duration-300">
+          <img alt="Starbound movie poster" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDd0tsnONTJYeyrv6qwGaQs_h5WDFNYhvsB4BfpRd4CmB3c4YE80kB81NUqRf3KsMG_l0HrqPPB_EKcaI9xmIqI2kwy031mALoApEiDv9Qz3eVSU4coe6yBaj8UI3HxZdozvNkhGprcUoWC3r3ovtbeW4ZBR3wj6LV8k0mFtVi0oprtBdeYwcKtlWDOO6GuQzKivNKhQczOeygcL5nUqlJTGXHJnO3ZPJfedXdeKuJcp2A-RPmU-gBPrw"/>
+          <button class="absolute top-2 left-2 z-20 text-on-surface/50 hover:text-white transition-colors group-hover:opacity-100 opacity-0 bg-surface-container-high/80 rounded-full p-1"><span class="material-symbols-outlined text-sm">bookmark_add</span></button>
+          <div class="absolute top-2 right-2 z-20 bg-surface-container-high/80 rounded px-1.5 py-0.5 flex items-center gap-1"><span class="material-symbols-outlined text-secondary-container text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="font-label-sm font-bold text-white text-[10px]">8.1</span></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0F0F12] via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-0 left-0 p-sm w-full transform translate-y-4 group-hover:translate-y-0 transition-transform">
+            <h3 class="font-label-md text-white line-clamp-1 font-bold">Starbound</h3>
+            <p class="font-label-sm text-on-surface-variant">2024</p>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="group relative aspect-[2/3] rounded-lg overflow-hidden bg-surface-container-low cursor-pointer card-hover transition-all duration-300">
+          <img alt="The Gilded Crown movie poster" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIqRMunksJ9bkEBoS2EPS7xP3xIjP9JgMbGKGy1KDFFaIJcyz1-vLAtV7FswQ8hLA_oWUCzm6YcE-UB0pff1EF_Sghr7XXnJY4AhGNYg4R1IenJQcD83kjkS61P6EuwpQfdkTyQRZ5Q5N-En8Ibpc-HTKx80zm6iKgxTDdBL9mpniVjM3Mpca3JSLejNKj9FyoapA3zkZa-4t7j8CiTFHMS0ia9uTbGibUfg_t_T6JGResuWUK0SXPbQ"/>
+          <button class="absolute top-2 left-2 z-20 text-on-surface/50 hover:text-white transition-colors group-hover:opacity-100 opacity-0 bg-surface-container-high/80 rounded-full p-1"><span class="material-symbols-outlined text-sm">bookmark_add</span></button>
+          <div class="absolute top-2 right-2 z-20 bg-surface-container-high/80 rounded px-1.5 py-0.5 flex items-center gap-1"><span class="material-symbols-outlined text-secondary-container text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="font-label-sm font-bold text-white text-[10px]">9.0</span></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0F0F12] via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-0 left-0 p-sm w-full transform translate-y-4 group-hover:translate-y-0 transition-transform">
+            <h3 class="font-label-md text-white line-clamp-1 font-bold">The Gilded Crown</h3>
+            <p class="font-label-sm text-on-surface-variant">2023</p>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="group relative aspect-[2/3] rounded-lg overflow-hidden bg-surface-container-low cursor-pointer card-hover transition-all duration-300">
+          <img alt="Silent Echoes movie poster" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeOCduAiZV8I_gz8nr1J_Tb8der2JDLTq1UNNyWTWhbbHzFQ_WDsrTE9-4LJuVMVBAQxP099aH_ZZi4cjUZFG-7jspM_6djf5EeN5r-u0qmwLHizrhEgqI97lOv1I3uDTVeTpWUVLQR3fIW8CTvBqrwyM-YJXRlFh6OY7CxpujHyT_ikxW46XAp5-uI_weNC7A52NqsXS83KDOUibbYYhAageANMef-mX8BNVcJbKPfTUg6hKiEAAQzw"/>
+          <button class="absolute top-2 left-2 z-20 text-on-surface/50 hover:text-white transition-colors group-hover:opacity-100 opacity-0 bg-surface-container-high/80 rounded-full p-1"><span class="material-symbols-outlined text-sm">bookmark_add</span></button>
+          <div class="absolute top-2 right-2 z-20 bg-surface-container-high/80 rounded px-1.5 py-0.5 flex items-center gap-1"><span class="material-symbols-outlined text-secondary-container text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="font-label-sm font-bold text-white text-[10px]">6.5</span></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0F0F12] via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-0 left-0 p-sm w-full transform translate-y-4 group-hover:translate-y-0 transition-transform">
+            <h3 class="font-label-md text-white line-clamp-1 font-bold">Silent Echoes</h3>
+            <p class="font-label-sm text-on-surface-variant">2022</p>
+          </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="group relative aspect-[2/3] rounded-lg overflow-hidden bg-surface-container-low cursor-pointer card-hover transition-all duration-300">
+          <img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Solaris Rising" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4f4UANTARkY8QtKx2xjllAE0l4CqnLvgR7GDezRvE7uJhD413PwTZ2xYxHoTjTzcOOLpkVraE9L0H31lRElLuoFuzWlQbbnBXvhUQWG5YTThLzjMMvxz6iSFMNEs2fERp-kHMXzQ11MQ-YCBiP4bl8ulcfn7nx1QJmW6kp-1kIMyxQFaXs07u4x9d_3Lw8Ddgw5DqDJKYI0_LJNZaDHeF_WT75lnsZ9n93IkpWure3L2QzeurQLrDZA"/>
+          <button class="absolute top-2 left-2 z-20 text-on-surface/50 hover:text-white transition-colors group-hover:opacity-100 opacity-0 bg-surface-container-high/80 rounded-full p-1"><span class="material-symbols-outlined text-sm">bookmark_add</span></button>
+          <div class="absolute top-2 right-2 z-20 bg-surface-container-high/80 rounded px-1.5 py-0.5 flex items-center gap-1"><span class="material-symbols-outlined text-secondary-container text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="font-label-sm font-bold text-white text-[10px]">8.8</span></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0F0F12] via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-0 left-0 p-sm w-full transform translate-y-4 group-hover:translate-y-0 transition-transform">
+            <h3 class="font-label-md text-white line-clamp-1 font-bold">Solaris Rising</h3>
+            <p class="font-label-sm text-on-surface-variant">2024</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Most Popular Section -->
+    <section class="py-lg px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+      <div class="flex justify-between items-end mb-md">
+        <h2 class="font-headline-md text-headline-md text-on-surface">Most Popular</h2>
+        <a class="text-on-surface-variant hover:text-primary font-label-md transition-colors flex items-center" href="#">See All <span class="material-symbols-outlined text-sm">chevron_right</span></a>
+      </div>
+      <div class="flex gap-md overflow-x-auto no-scrollbar pb-4 snap-x">
+        <div class="min-w-[160px] md:min-w-[200px] max-w-[240px] flex-none snap-start group relative aspect-[2/3] rounded-lg overflow-hidden bg-surface-container-low cursor-pointer card-hover transition-all duration-300">
+          <img alt="Popular Movie 1" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApPmjWbRmnsh6Pgb8PlmYys_NCE_uIhczaLLw5gKC_GhUC6EEHhF5EfJpkMHAQjTK6lNB9fs6toAJzS59wF_LijWJm5TYJGgHvq8AFEuGr9jW3bTK8xnnRNoNfQVPjXKds-hOg-V96DvWZsfk2r5vCop0hk-t8lde3m1zyL3tnigTiKNCxkqiq35VyYirL2SsKf3Wbu9A7phY2FzPkrtBN0YpHBTmHgnIxskP6WYp6gkl3MBzILvgzSA"/>
+          <button class="absolute top-2 left-2 z-20 text-on-surface/50 hover:text-white transition-colors group-hover:opacity-100 opacity-0 bg-surface-container-high/80 rounded-full p-1"><span class="material-symbols-outlined text-sm">bookmark_add</span></button>
+          <div class="absolute top-2 right-2 z-20 bg-surface-container-high/80 rounded px-1.5 py-0.5 flex items-center gap-1"><span class="material-symbols-outlined text-secondary-container text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="font-label-sm font-bold text-white text-[10px]">9.2</span></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0F0F12] via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-0 left-0 p-sm w-full transform translate-y-4 group-hover:translate-y-0 transition-transform">
+            <h3 class="font-label-md text-white line-clamp-1 font-bold">The Last Stand</h3>
+            <p class="font-label-sm text-on-surface-variant">2023</p>
+          </div>
+        </div>
+        <div class="min-w-[160px] md:min-w-[200px] max-w-[240px] flex-none snap-start group relative aspect-[2/3] rounded-lg overflow-hidden bg-surface-container-low cursor-pointer card-hover transition-all duration-300">
+          <div class="absolute inset-0 bg-surface-variant flex items-center justify-center text-on-surface-variant text-sm">Poster</div>
+          <div class="absolute top-2 right-2 z-20 bg-surface-container-high/80 rounded px-1.5 py-0.5 flex items-center gap-1"><span class="material-symbols-outlined text-secondary-container text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="font-label-sm font-bold text-white text-[10px]">8.9</span></div>
+          <div class="absolute bottom-0 left-0 p-sm w-full">
+            <h3 class="font-label-md text-white line-clamp-1 font-bold">Echoes of Time</h3>
+            <p class="font-label-sm text-on-surface-variant">2024</p>
+          </div>
+        </div>
+        <div class="min-w-[160px] md:min-w-[200px] max-w-[240px] flex-none snap-start group relative aspect-[2/3] rounded-lg overflow-hidden bg-surface-container-low cursor-pointer card-hover transition-all duration-300">
+          <div class="absolute inset-0 bg-surface-variant flex items-center justify-center text-on-surface-variant text-sm">Poster</div>
+          <div class="absolute top-2 right-2 z-20 bg-surface-container-high/80 rounded px-1.5 py-0.5 flex items-center gap-1"><span class="material-symbols-outlined text-secondary-container text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="font-label-sm font-bold text-white text-[10px]">8.5</span></div>
+          <div class="absolute bottom-0 left-0 p-sm w-full">
+            <h3 class="font-label-md text-white line-clamp-1 font-bold">Neon Horizon</h3>
+            <p class="font-label-sm text-on-surface-variant">2023</p>
+          </div>
+        </div>
+        <div class="min-w-[160px] md:min-w-[200px] max-w-[240px] flex-none snap-start group relative aspect-[2/3] rounded-lg overflow-hidden bg-surface-container-low cursor-pointer card-hover transition-all duration-300">
+          <div class="absolute inset-0 bg-surface-variant flex items-center justify-center text-on-surface-variant text-sm">Poster</div>
+          <div class="absolute top-2 right-2 z-20 bg-surface-container-high/80 rounded px-1.5 py-0.5 flex items-center gap-1"><span class="material-symbols-outlined text-secondary-container text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="font-label-sm font-bold text-white text-[10px]">8.7</span></div>
+          <div class="absolute bottom-0 left-0 p-sm w-full">
+            <h3 class="font-label-md text-white line-clamp-1 font-bold">The Deep</h3>
+            <p class="font-label-sm text-on-surface-variant">2022</p>
+          </div>
+        </div>
+        <div class="min-w-[160px] md:min-w-[200px] max-w-[240px] flex-none snap-start group relative aspect-[2/3] rounded-lg overflow-hidden bg-surface-container-low cursor-pointer card-hover transition-all duration-300">
+          <div class="absolute inset-0 bg-surface-variant flex items-center justify-center text-on-surface-variant text-sm">Poster</div>
+          <div class="absolute top-2 right-2 z-20 bg-surface-container-high/80 rounded px-1.5 py-0.5 flex items-center gap-1"><span class="material-symbols-outlined text-secondary-container text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="font-label-sm font-bold text-white text-[10px]">9.1</span></div>
+          <div class="absolute bottom-0 left-0 p-sm w-full">
+            <h3 class="font-label-md text-white line-clamp-1 font-bold">Quantum</h3>
+            <p class="font-label-sm text-on-surface-variant">2024</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Web Series Section -->
+    <section class="py-lg px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+      <div class="flex justify-between items-end mb-md">
+        <h2 class="font-headline-md text-headline-md text-on-surface">Web Series</h2>
+        <a class="text-on-surface-variant hover:text-primary font-label-md transition-colors flex items-center" href="#">See All <span class="material-symbols-outlined text-sm">chevron_right</span></a>
+      </div>
+      <div class="flex gap-md overflow-x-auto no-scrollbar pb-4 snap-x">
+        <div class="min-w-[160px] md:min-w-[200px] max-w-[240px] flex-none snap-start group relative aspect-[2/3] rounded-lg overflow-hidden bg-surface-container-low cursor-pointer card-hover transition-all duration-300">
+          <div class="absolute inset-0 bg-surface-variant flex items-center justify-center text-on-surface-variant text-sm">Poster</div>
+          <div class="absolute top-2 right-2 z-20 bg-surface-container-high/80 rounded px-1.5 py-0.5 flex items-center gap-1"><span class="material-symbols-outlined text-secondary-container text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="font-label-sm font-bold text-white text-[10px]">8.8</span></div>
+          <div class="absolute bottom-0 left-0 p-sm w-full">
+            <h3 class="font-label-md text-white line-clamp-1 font-bold">Stranger Things</h3>
+            <p class="font-label-sm text-on-surface-variant">2016</p>
+          </div>
+        </div>
+        <div class="min-w-[160px] md:min-w-[200px] max-w-[240px] flex-none snap-start group relative aspect-[2/3] rounded-lg overflow-hidden bg-surface-container-low cursor-pointer card-hover transition-all duration-300">
+          <div class="absolute inset-0 bg-surface-variant flex items-center justify-center text-on-surface-variant text-sm">Poster</div>
+          <div class="absolute top-2 right-2 z-20 bg-surface-container-high/80 rounded px-1.5 py-0.5 flex items-center gap-1"><span class="material-symbols-outlined text-secondary-container text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="font-label-sm font-bold text-white text-[10px]">9.3</span></div>
+          <div class="absolute bottom-0 left-0 p-sm w-full">
+            <h3 class="font-label-md text-white line-clamp-1 font-bold">The Wire</h3>
+            <p class="font-label-sm text-on-surface-variant">2002</p>
+          </div>
+        </div>
+        <div class="min-w-[160px] md:min-w-[200px] max-w-[240px] flex-none snap-start group relative aspect-[2/3] rounded-lg overflow-hidden bg-surface-container-low cursor-pointer card-hover transition-all duration-300">
+          <div class="absolute inset-0 bg-surface-variant flex items-center justify-center text-on-surface-variant text-sm">Poster</div>
+          <div class="absolute top-2 right-2 z-20 bg-surface-container-high/80 rounded px-1.5 py-0.5 flex items-center gap-1"><span class="material-symbols-outlined text-secondary-container text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="font-label-sm font-bold text-white text-[10px]">8.4</span></div>
+          <div class="absolute bottom-0 left-0 p-sm w-full">
+            <h3 class="font-label-md text-white line-clamp-1 font-bold">Dark</h3>
+            <p class="font-label-sm text-on-surface-variant">2017</p>
+          </div>
+        </div>
+        <div class="min-w-[160px] md:min-w-[200px] max-w-[240px] flex-none snap-start group relative aspect-[2/3] rounded-lg overflow-hidden bg-surface-container-low cursor-pointer card-hover transition-all duration-300">
+          <div class="absolute inset-0 bg-surface-variant flex items-center justify-center text-on-surface-variant text-sm">Poster</div>
+          <div class="absolute top-2 right-2 z-20 bg-surface-container-high/80 rounded px-1.5 py-0.5 flex items-center gap-1"><span class="material-symbols-outlined text-secondary-container text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="font-label-sm font-bold text-white text-[10px]">9.0</span></div>
+          <div class="absolute bottom-0 left-0 p-sm w-full">
+            <h3 class="font-label-md text-white line-clamp-1 font-bold">Severance</h3>
+            <p class="font-label-sm text-on-surface-variant">2022</p>
+          </div>
+        </div>
+        <div class="min-w-[160px] md:min-w-[200px] max-w-[240px] flex-none snap-start group relative aspect-[2/3] rounded-lg overflow-hidden bg-surface-container-low cursor-pointer card-hover transition-all duration-300">
+          <div class="absolute inset-0 bg-surface-variant flex items-center justify-center text-on-surface-variant text-sm">Poster</div>
+          <div class="absolute top-2 right-2 z-20 bg-surface-container-high/80 rounded px-1.5 py-0.5 flex items-center gap-1"><span class="material-symbols-outlined text-secondary-container text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="font-label-sm font-bold text-white text-[10px]">8.7</span></div>
+          <div class="absolute bottom-0 left-0 p-sm w-full">
+            <h3 class="font-label-md text-white line-clamp-1 font-bold">The Boys</h3>
+            <p class="font-label-sm text-on-surface-variant">2019</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Upcoming Section -->
+    <section class="py-lg px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto pb-24">
+      <div class="flex justify-between items-end mb-md">
+        <h2 class="font-headline-md text-headline-md text-on-surface">Upcoming</h2>
+        <a class="text-on-surface-variant hover:text-primary font-label-md transition-colors flex items-center" href="#">See All <span class="material-symbols-outlined text-sm">chevron_right</span></a>
+      </div>
+      <div class="flex gap-md overflow-x-auto no-scrollbar pb-4 snap-x">
+        <div class="min-w-[160px] md:min-w-[200px] max-w-[240px] flex-none snap-start group relative aspect-[2/3] rounded-lg overflow-hidden bg-surface-container-low cursor-pointer card-hover transition-all duration-300">
+          <div class="absolute inset-0 bg-surface-variant flex items-center justify-center text-on-surface-variant text-sm">Poster</div>
+          <div class="absolute top-2 right-2 z-20 bg-primary/20 text-primary border border-primary/30 rounded px-2 py-0.5"><span class="font-label-sm font-bold text-[10px] uppercase tracking-wider">Coming Soon</span></div>
+          <div class="absolute bottom-0 left-0 p-sm w-full">
+            <h3 class="font-label-md text-white line-clamp-1 font-bold">Nova Prime</h3>
+            <p class="font-label-sm text-on-surface-variant">2025</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-surface-container-lowest border-t border-surface-variant py-8 px-margin-mobile md:px-margin-desktop">
+    <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-on-surface-variant text-sm">
+      <p>&copy; 2026 MovieSphere. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-primary transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-primary transition-colors">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
